@@ -1,0 +1,48 @@
+textarea {
+	width: 43%;
+	height: 200px;
+	max-height: 200px;
+	vertical-align: center;
+	margin-right: 2%;
+}
+
+textarea:first-child {
+	margin-left: 5%;
+} 
+textarea:last-child {
+	margin-right: 5%;
+}
+
+input {
+	display: inline-block;
+}
+
+.errors {
+	color: red;
+	margin-bottom: 10px;
+	margin-left: 5%;
+}
+
+.result {
+    background-color: lightgray;
+    position: absolute;
+    margin: 0 5% 0 5%;
+    width: 88%;
+}
+
+.child {
+	float: left;
+	width: 44%;
+}
+
+.change {
+	color: yellow;
+}
+
+.add {
+	color: green;
+}
+
+.remove {
+	color: red;
+}
