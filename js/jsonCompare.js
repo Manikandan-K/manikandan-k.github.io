@@ -12,13 +12,13 @@ var compare = function (json1, json2) {
 	keys.forEach(function(key){
 		if(json1.hasOwnProperty(key) || json2.hasOwnProperty(key) ) {
 			
-			if( typeof(json1[key]) == 'object' && typeof(json2[key]) == 'object' ) {
+			if( _.isObject(json1[key]) && _.isObject(json2[key]) ) {
 				var deepObjectDiffs = compare(json1[key], json2[key]);
 				if(! isEmpty(deepObjectDiffs[0])) {
 				diff1[key] = deepObjectDiffs[0];
 				diff2[key] = deepObjectDiffs[1]; 
 				}
-			}else if (typeof(json1[key]) == 'object' || typeof(json2[key]) == 'object' || json1[key] != json2[key]) {
+			}else if ( _.isObject(json1[key]) || _.isObject(json2[key]) || json1[key] != json2[key] ) {
 				diff1[key] = json1[key];
 				diff2[key] = json2[key];
 			}

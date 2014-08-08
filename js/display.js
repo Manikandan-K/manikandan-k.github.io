@@ -68,6 +68,8 @@ var getValue = function(object, key, level) {
 	var value = object[key];
 	if( _.isArray(object[key]) )
 		value = formatArray(object[key], level)
+	else if( _.isString(object[key]) )
+		value = '\"' + value + '\"'; 
 	else if( _.isObject(object[key]) )
 		value = formateJson(object[key], level);
 

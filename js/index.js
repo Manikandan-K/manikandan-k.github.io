@@ -55,7 +55,7 @@ var convertToJson = function(objs) {
 
 	for(var i = 0; i < objs.length; i++ ) {
 		try {
-			json[i] =JSON.parse(objs[i]);
+			json[i] = JSON.parse(objs[i]) ;
 		}catch(ex) {
 			error = error + "Please give valid json " + (i+1) +" Reason: "+ ex +". ";
 		}	
