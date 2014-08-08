@@ -11,10 +11,11 @@ function display(diff) {
 
 var generateDifferenceElement = function(diff1, diff2, root, level) {
 
+	var imageElement = ("<i class='expand_collapse icon-angle-circled-down'>"+root+"</i>");
+
 	var classes = 'child level-'+level
-	var anchorElement = "<a class='anchor-1'>" +root+ "</a>"
 	var el = $("<div class='"+classes+"'></div>");
-	el.append(anchorElement);
+	el.append(imageElement);
 	
 	var keys = _.union(Object.keys(diff1), Object.keys(diff2)) ;
 	keys.forEach(function(key){
@@ -45,7 +46,7 @@ var formateJson = function(object, level) {
  	var tabString = getTabString(level);
 
 	_.keys(object).forEach(function(key){
-		outputString += tabString + "\t" + key + " : " + getValue(object, key, level+1) + ",\n";
+		outputString += tabString + '\t\"' + key + '\" : ' + getValue(object, key, level+1) + ',\n';
 	});
 	outputString = outputString.substring(0, outputString.length-2);
 	return outputString + "\n" + tabString + "}";
@@ -84,12 +85,12 @@ var getTabString = function(n) {
 }
 
 var init = function() {
-	$(".anchor-1").click(function(el){
-		console.log(el);
+	$(".expand_collapse").click(function(el){
+		$(el.currentTarget).toggleClass("icon-angle-circled-down");
+		$(el.currentTarget).toggleClass("icon-angle-circled-right");
 		$(el.currentTarget).siblings().slideToggle(100);		
 	});
 };
-
 
 var arrayToString = function(array) {
 	return "[" + array.toString() + "]";
