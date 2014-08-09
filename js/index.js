@@ -1,80 +1,95 @@
 var clearText = function() {
 	$('.input').val('');
+	clearNonInputValues();
 };
 
 var diff = function() {
-	var objs = [];
-	objs[0] = $('#json1').val().trim();
-	objs[1] = $('#json2').val().trim();
+	var input1 = getInput("json1");
+	var input2 = getInput("json2");
 
-	$('.errors').text("");			
-	$('.result').text("");			
-	
-	var result = convertToJson(objs);
+	clearNonInputValues();			
 
-	if(result["error"]) {
-		$('.errors').text(result["error"]);			
+	if( !input1 || !input2 ) {
+		setError("Please enter two jsons to compare");
 		return;
 	}
 
-	var jsons = result["json"];
+	var result1 = convertToJson(input1);
+	var result2 = convertToJson(input2);
 
-	display(compare(jsons[0], jsons[1]));
-};
+	if( result1["error"] || result2["error"]) {
+		setError(result1["error"]+ result2["error"]);
+		return;
+	}
+
+	var diff = compare(result1["json"], result2["json"])
+	display(diff);
+}
 
 var beautify = function() {
-	var objs = [];
-	objs[0] = $('#json1').val().trim();
-	objs[1] = $('#json2').val().trim();
+	clearNonInputValues();
 
-	$('.errors').text("");			
-	$('.result').text("");			
+	var isElementOneProcessed = processElement("json1", "Left");
+	var isElementTwoProcessed = processElement("json2", "Right");
 	
-	var result = convertToJson(objs);
-
-	if(result["error"]) {
-		$('.errors').text(result["error"]);			
-		return;
+	if ( ! (isElementOneProcessed || isElementTwoProcessed) ) {
+		setError("Give json to format");
 	}
-
-	var jsons = result["json"];
-
-	$('#json1').val(formateJson(jsons[0]));
-	$('#json2').val(formateJson(jsons[1]));
 }
 
-var convertToJson = function(objs) {
-	var error = "";
-	var json = [] ;
-
-	if(isEmptyStringArray(objs)) {
-		return { 
-			"error" : "Please enter two jsons to compare"
-		}
-	}
-
-	for(var i = 0; i < objs.length; i++ ) {
-		try {
-			json[i] = JSON.parse(objs[i]) ;
-		}catch(ex) {
-			error = error + "Please give valid json " + (i+1) +" Reason: "+ ex +". ";
-		}	
-	}
-
-	return {
-		"error" : error,
-		"json" : json
-	};
-
-}
-
-var isEmptyStringArray = function(objs) {
-	for(var i = 0; i < objs.length; i++ ) { 
-		if(!objs[i]) {
-			return true;
-		}
+var processElement = function(elementId, position) {
+	var input = getInput(elementId);
+	if(input) {
+		format(input, elementId, position);
+		return true;
 	}
 	return false;
 }
 
+var format = function(object, elementId, position) {
+	var result = convertToJson(object);
 
+	if(result["error"]) {
+		setError(position + result["error"]);
+	}else {
+		$('#' + elementId).val(formateJson(result["json"]));
+	}
+
+}
+
+var clearNonInputValues = function() {
+	clearError();
+	clearResult();
+}
+
+var setError = function(msg) {
+	$('.errors').text(msg);
+}
+
+var clearError = function() {
+	setError("");
+}
+
+var clearResult = function() {
+	$('.result').text("");
+}
+
+var getInput = function(elementId) {
+	return $("#"+elementId).val().trim();
+}
+
+var convertToJson = function(object) {
+	var json; 
+	var error  ="";
+
+	try {
+		json = JSON.parse(object) ;
+	}catch(ex) {
+		error =" Json is invalid. Reason: "+ ex +". ";
+	}
+
+	return {
+		"json"  : json,
+		"error" : error
+	};	
+}
