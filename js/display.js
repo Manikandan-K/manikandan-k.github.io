@@ -22,19 +22,18 @@ var generateDifferenceElement = function(diff1, diff2, root, level) {
 		if(diff1.hasOwnProperty(key) || diff2.hasOwnProperty(key)) {
 
 			if(_.isArray(diff1[key]) || _.isArray(diff2[key]) ) {
-				el.append('<ul class="change strike"> '+ key + ":" + arrayToString(diff1[key])+ ' </ul>')
-				el.append('<ul class="change"> '+ key + ":" + arrayToString(diff2[key])+ ' </ul>') 
+				el.append('<ul class="change strike"> '+ key + " : " + arrayToString(diff1[key])+ ' </ul>')
+				el.append('<ul class="change"> '+ key + " : " + arrayToString(diff2[key])+ ' </ul>') 
 			}else if(_.isObject(diff1[key]) || _.isObject(diff2[key])) {
 				el.append(generateDifferenceElement(diff1[key], diff2[key], key, level+1));
 			}else if(diff1[key] && diff2[key]) {
-				el.append('<ul class="change strike"> '+ key + ":" + diff1[key]+ ' </ul>')
-				el.append('<ul class="change"> '+ key + ":" + diff2[key]+ ' </ul>') 
+				el.append('<ul class="change strike"> '+ key + " : " + getStringValue(diff1[key])+ ' </ul>')
+				el.append('<ul class="change"> '+ key + " : " + getStringValue(diff2[key])+ ' </ul>') 
 			}else if(diff1[key]) {
-				el.append('<ul class="add">'+ key + ":" + diff1[key]+ ' </ul>')
+				el.append('<ul class="add">'+ key + " : " + getStringValue(diff1[key])+ ' </ul>')
 			}else {
-				el.append('<ul class="remove">'+ key + ":" + diff2[key]+ ' </ul>')
+				el.append('<ul class="remove">'+ key + " : " + getStringValue(diff2[key])+ ' </ul>')
 			}
-
 		}
 	});
 	return el;
@@ -76,6 +75,13 @@ var getValue = function(object, key, level) {
 
 	return value;
 }
+
+var getStringValue =  function(object) {
+	if( _.isString(object) )
+		return '\"' + object + '\"'; 
+	return object;
+}
+
 
 var getTabString = function(n) {
 	var string="";
