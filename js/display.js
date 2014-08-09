@@ -1,5 +1,5 @@
 function display(diff) {
-	if(isEmpty(diff[0])) {
+	if(_.isEmpty(diff[0])) {
 		$('.result').text("No difference");
 		return;
 	}
@@ -17,26 +17,31 @@ var generateDifferenceElement = function(diff1, diff2, root, level) {
 	var el = $("<div class='"+classes+"'></div>");
 	el.append(imageElement);
 	
-	var keys = _.union(Object.keys(diff1), Object.keys(diff2)) ;
+	var keys = _.union(_.keys(diff1), _.keys(diff2)) ;
 	keys.forEach(function(key){
-		if(diff1.hasOwnProperty(key) || diff2.hasOwnProperty(key)) {
 
-			if(_.isArray(diff1[key]) || _.isArray(diff2[key]) ) {
-				el.append('<ul class="change strike"> '+ key + " : " + arrayToString(diff1[key])+ ' </ul>')
-				el.append('<ul class="change"> '+ key + " : " + arrayToString(diff2[key])+ ' </ul>') 
-			}else if(_.isObject(diff1[key]) || _.isObject(diff2[key])) {
-				el.append(generateDifferenceElement(diff1[key], diff2[key], key, level+1));
-			}else if(diff1[key] && diff2[key]) {
-				el.append('<ul class="change strike"> '+ key + " : " + getStringValue(diff1[key])+ ' </ul>')
-				el.append('<ul class="change"> '+ key + " : " + getStringValue(diff2[key])+ ' </ul>') 
-			}else if(diff1[key]) {
-				el.append('<ul class="add">'+ key + " : " + getStringValue(diff1[key])+ ' </ul>')
-			}else {
-				el.append('<ul class="remove">'+ key + " : " + getStringValue(diff2[key])+ ' </ul>')
-			}
+		if(_.isArray(diff1[key]) || _.isArray(diff2[key]) ) {
+			el.append('<ul class="change strike"> '+ key + " : " + arrayToString(diff1[key])+ ' </ul>')
+			el.append('<ul class="change"> '+ key + " : " + arrayToString(diff2[key])+ ' </ul>') 
+		}else if(_.isObject(diff1[key]) || _.isObject(diff2[key])) {
+			el.append(generateDifferenceElement(diff1[key], diff2[key], key, level+1));
+		} else {
+			appendContentForNonObject(diff1, diff2, key,el);
 		}
+
 	});
 	return el;
+}
+
+var appendContentForNonObject = function(diff1, diff2, key,el) {
+	if(_.has(diff1,key) && _.has(diff2,key) ) {
+		el.append('<ul class="change strike"> '+ key + " : " + getStringValue(diff1[key])+ ' </ul>')
+		el.append('<ul class="change"> '+ key + " : " + getStringValue(diff2[key])+ ' </ul>') 
+	}else if(_.has(diff1,key)) {
+		el.append('<ul class="add">'+ key + " : " + getStringValue(diff1[key])+ ' </ul>')
+	}else {
+		el.append('<ul class="remove">'+ key + " : " + getStringValue(diff2[key])+ ' </ul>')
+	}
 }
 
 var formateJson = function(object, level) {
