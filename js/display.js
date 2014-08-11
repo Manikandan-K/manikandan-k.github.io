@@ -17,10 +17,11 @@ var generateDifferenceElement = function(diff1, diff2, root, level) {
 	var el = $("<div class='"+classes+"'></div>");
 	el.append(imageElement);
 	
-	var keys = _.union(_.keys(diff1), _.keys(diff2)) ;
+	
+	var keys = getUniqueKeys(diff1, diff2); 
 	keys.forEach(function(key){
 
-		if(_.isObject(diff1[key]) || _.isObject(diff2[key])) {
+		if( ( _.has(diff1, key) && _.isObject(diff1[key]) ) || ( _.has(diff1, key) && _.isObject(diff1[key]) ) ) {
 			el.append(generateDifferenceElement(diff1[key], diff2[key], key, level+1));
 		} else {
 			appendContentForNonObject(diff1, diff2, key,el);
@@ -39,6 +40,22 @@ var appendContentForNonObject = function(diff1, diff2, key,el) {
 	}else {
 		el.append('<ul class="add">'+ key + " : " + getStringValue(diff2[key])+ ' </ul>')
 	}
+}
+
+var getUniqueKeys = function() {
+	var keys = [];
+	for (var i = 0; i < arguments.length - 1; i++) {
+		keys = _.union(keys, getKeys(arguments[i]));
+	};
+	return keys;
+}
+
+var getKeys = function(object) {
+	var keys = [];
+	if(_.isObject(object)) {
+		keys =  _.keys(object);
+	}
+	return keys;
 }
 
 var formateJson = function(object, level) {
