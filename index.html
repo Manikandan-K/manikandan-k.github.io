@@ -1,29 +1,23 @@
-<!doctype html>
+---
+layout: default
+---
+
+<div class="home">
+
+    <h1 class="page-heading">Posts</h1>
+
+    <ul class="post-list">
+        {% for post in site.posts %}
+        <li>
+            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+            <h2>
+                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h2>
+        </li>
+        {% endfor %}
+    </ul>
 
 
+</div>
 
-<html>
-	<head>
-		<title>Construction under progress</title>
-		<link rel="stylesheet" href="css/flipclock.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script src="js/jquery-2.0.3.js"></script>
-		<script src="js/flipclock.min.js"></script>
-	</head>
-	<body>
-
-		<header class="header">
-			<h1>
-				<a href="http://manikandan-k.github.io/JsonDiff/">Json diff</a>
-			</h1>
-
-
-			<div class="clock"></div>
-
-			<h2>More to come...</h2>
-
-		</header>
-		
-		<script src="js/index.js"></script>
-	</body>
-</html>

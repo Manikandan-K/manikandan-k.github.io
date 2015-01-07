@@ -1,0 +1,27 @@
+
+.site-header, .footer {
+    background-color: #3e9cbf;
+}
+
+.navbar-item {
+    padding: 14px;
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar-item:first-of-type{
+    margin-left: 8%;
+}
+
+.post,
+.home {
+    margin: 0 8%;
+}
+
+
+.navbar-item:active,
+.navbar-item:hover {
+    color: red;
+    text-decoration: none;
+}
