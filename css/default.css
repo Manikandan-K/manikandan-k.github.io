@@ -9,7 +9,7 @@
     text-decoration: none;
 }
 
-.navbar-item:first-of-type{
+.navbar:first-child{
     margin-left: 8%;
 }
 
@@ -19,8 +19,8 @@
 }
 
 
-.navbar-item:active,
-.navbar-item:hover {
+a:active,
+a:hover {
     color: red;
     text-decoration: none;
 }
@@ -38,3 +38,10 @@ html, body {
     height: 4em;
 }
 
+.share {
+    padding: 8px;
+}
+
+.share a {
+    padding-left: 8px;
+}
