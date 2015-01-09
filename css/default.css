@@ -13,6 +13,10 @@
     margin-left: 8%;
 }
 
+.navbar {
+    margin-bottom: 0;
+}
+
 .post,
 .home {
     margin: 0 8%;
@@ -44,4 +48,12 @@ html, body {
 
 .share a {
     padding-left: 8px;
+}
+
+.post-list {
+    margin-top: 17px;
+}
+
+.post-label {
+    margin-top: 10px;
 }
