@@ -10,7 +10,7 @@
 }
 
 .navbar:first-child{
-    margin-left: 8%;
+    margin-left: 12%;
 }
 
 .navbar {
@@ -20,13 +20,6 @@
 .post,
 .home {
     margin: 0 8%;
-}
-
-
-a:active,
-a:hover {
-    color: red;
-    text-decoration: none;
 }
 
 html, body {
@@ -43,7 +36,7 @@ html, body {
 }
 
 .share {
-    padding: 8px;
+    padding: 8px 0;
 }
 
 .share a {
@@ -56,4 +49,35 @@ html, body {
 
 .post-label {
     margin-top: 10px;
+}
+
+
+
+.sidebar {
+    background: #3e9cbf;
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 50px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.sidebar a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:active,
+a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+
+.container {
+    margin-left: 200px;
 }
