@@ -22,7 +22,7 @@ Behind scenes, JDBI will be doing begin, commit and rollback. For example.
       }
     }
 
-Here both saveSomething and saveSomethingElse will be in same transaction. This will work when one Dao is involved in transaction.But how to use Transaction when multiple Dao calls needs to be in single transaction.
+Here both saveSomething and saveSomethingElse will be in same transaction. This will work when single Dao is involved in transaction.But how to use Transaction when multiple Dao calls needs to be in single transaction.
 We can attach all Daos to the same handle. For example,
 
     public abstract class Dao1 {
@@ -57,7 +57,7 @@ And make sure that you attach handle to Repository.
     repository.insertInTransaction();  // This will be in single transaction.
 
 
-This will work. But mostly we don't use attach handle to Daos because we don't want to mange open and closing the DBI.
+This will work. But mostly we don't attach handle to Daos because we don't want to mange open and closing the DBI.
 JDBI gives onDemand feature which will obtain and release connection automatically, as it needs to.
 When we use Dbi.onDemand to get sqlObject, we should use CreateSqlObject which will make sure that all Daos get same handle.
 
