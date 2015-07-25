@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "How to use Transactions in JDBI"
+comments: true
 ---
 
 I will explain how effectively we can use JDBI for transaction management in this article. JDBI provides easy way to manage to transaction. Just use @Transaction in the method.
