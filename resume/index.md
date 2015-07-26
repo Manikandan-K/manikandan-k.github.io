@@ -37,7 +37,7 @@ ThoughtWorks University(TWU) is our graduate training program. It is an awesome 
 * UI with backbone.js
 
 ##### Description:
-  We developed this product for big Retail client in Italy. They were using excel for their promotional activities for products. They faced difficulty in promotion planning.  Since Promotions running everyday, Promotion management is one of the key factor in their Business. We are building this product for better Promotion planning, early feedback from stores and helping high level team to evaluate performance at different categories.
+  We developed this product for big Retail client in Italy. They were using excel for their promotional activities for products. They faced difficulty in promotion planning.  Since Promotions running everyday, Promotion management is one of the key factor in their business. We are building this product for better Promotion planning, early feedback from stores and helping high level team to evaluate performance at different categories.
 
 #####  Client Relationship:
 * I was in Italy during our first release to monitor our release activities and conducting further sessions with all our stakeholders to explain the functionalities  available in the product.
@@ -57,7 +57,7 @@ ThoughtWorks University(TWU) is our graduate training program. It is an awesome 
 * UI - Javascript with our own MVVM framework.
 
 ##### Description:
-  This product was developed for another big retail client in US. This is targeted for online Pricing and Replenishment. Before our product,  every store had offline data to work. We have moved this data cloud and made it online to all the stores.
+  This product was developed for another big retail client in US. This is targeted for online Pricing and Replenishment. Before our product,  every store had offline data to work. We have moved this data to cloud and made it online to all the stores.
 
 #####  Duration:
  July 2012 - March 2013
