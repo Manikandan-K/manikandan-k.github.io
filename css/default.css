@@ -87,3 +87,12 @@ a:hover {
     margin-left: 210px;
     margin-right: 80px;
 }
+
+.progress {
+    height: 12px;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    line-height: 12px;
+}
