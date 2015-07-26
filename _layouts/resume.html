@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+<div class="wrapper">
+
+    {% include resume_header.html %}
+
+    <div class="page-content">
+        <div id="layout">
+            <a href="#menu" id="menuLink" class="menu-link">
+                <span></span>
+            </a>
+
+            <div class="sidebar">
+                <ul class="nav nav-stacked">
+                    <li> <a href="#open-source-contribution">Open Source Contribution</a> </li>
+                    <li> <a href="#professional-experience">Professional Experience</a>
+                        <ul>
+                            <li> <a href="#twu-trainer">TWU Trainer</a> </li>
+                            <li> <a href="#promotion">Promotion</a> </li>
+                            <li> <a href="#stores-to-cloud">Stores to Cloud</a> </li>
+                        </ul>
+                    </li>
+
+                    <li> <a href="#skill-set">Skill Set</a> </li>
+                    <li> <a href="#education">Education</a> </li>
+                    <li> <a href="#contact">Contact</a> </li>
+                </ul>
+            </div>
+            <div class="container">
+                {{ content }}
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="push"></div>
+</div>
+{% include footer.html %}
+
+</body>
+
+</html>
+
+

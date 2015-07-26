@@ -2,7 +2,7 @@
     background-color: #3e9cbf;
 }
 
-.navbar-item {
+.navbar > .navbar-item  {
     padding: 14px;
     display: inline-block;
     color: #ffffff;
@@ -80,4 +80,10 @@ a:hover {
 
 .container {
     margin-left: 200px;
+}
+
+.panel-default {
+    margin-top: 10px;
+    margin-left: 210px;
+    margin-right: 80px;
 }
