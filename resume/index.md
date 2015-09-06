@@ -7,7 +7,7 @@
 Open Source Contribution:
 ----------------------------------------
 
-I developed open source library Jdbi-folder which removes the need of any intermediate mappers for ResultSet to Java object conversion in JDBI. It provides annotations like OneToOne and OneToMany (famous in Hibernate), through which it will takes care of complex multi level parent child relationships. It improved our team productivity significantly. I did give the talk in Geeknight Chennai about this library. Currently it is used in many countries.
+I developed open source library Jdbi-folder which removes the the need of any intermediate mappers for ResultSet to Java object conversion in JDBI. It provides annotations like OneToOne and OneToMany (famous in Hibernate), through which it will takes care of complex multi level parent child relationships. It improved our team productivity significantly. I did give the talk in Geeknight Chennai about this library. Currently it is used in many countries.
 
 For more details
 
@@ -31,17 +31,17 @@ ThoughtWorks University(TWU) is our graduate training program. It is an awesome 
 
 ##### Tech stack:
 
-* Micro services architecture with REST
+* Micro services architecture
 * Multiple Java Services (DropWizard, JDBI, Postgresql)
 * Rails aggregation service
 * UI with backbone.js
 
 ##### Description:
-  We developed this product for big Retail client in Italy. They were using excel for their promotional activities for products. They faced difficulty in promotion planning.  Since Promotions running everyday, Promotion management is one of the key factor in their Business. We are building this product for better Promotion planning, early feedback from stores and helping high level team to evaluate performance at different categories.
+  We developed this product for big Retail client in Italy. They were using excel for their promotional activities for products. They faced difficulty in promotion planning.  Since Promotions running everyday, Promotion management is one of the key factor in their Business. We are building this product for better Promotion planning, early from feedback from stores and helping high level team to evaluate performance at different level.
 
 #####  Client Relationship:
-* I was in Italy during our first release to monitor our release activities and conducting further sessions with all our stakeholders to explain the functionalities  available in the product.
-* My second trip was for "Inception". I did data analysis and involved in Inception with business stakeholders to come up with next set of functionalities  to be built.
+* I was in Italy during our first release to monitor our release activities and conducting further sessions with all our stakeholders to explain the functionalities available in the product.
+* My second trip was for "Inception". I did data analysis and involved in Inception with business stakeholders to come up with next set of functionlities to be built.
 
 ##### Duration:
   May 2013 - June 2015
@@ -68,7 +68,8 @@ ThoughtWorks University(TWU) is our graduate training program. It is an awesome 
 Skill set
 --------------------------------------
 
-{% include skill_set.html %}
+
+<canvas id="myChart" width="100" height="15"></canvas>
 
 Education
 ------------------------------------
@@ -89,10 +90,38 @@ Contact
   Manikandan Kumar, <br/>
   18/10C Ammal Eari road, <br/>
   5th Cross,Dadagapatty gate, <br/>
-  Salem.TamilNadu, India-636006.
+  Salem.TamilNadu, India.
 
 
 
 [folder-blog]: http://manikandan-k.github.io/jdbi_folder
 [ytube-link]: https://www.youtube.com/watch?v=9dGLWKBaagI&index=2&list=PLH8WPOo4hnqy91GVkErUesfJbn_jzk_6q
 
+
+<script src="chart.js"></script>
+<script src="horizontal_bar.js"></script>
+<script type="text/javascript">
+var data = {
+    labels: ["Ruby", "Postgresql", "Dropwizard", "JavaScript" ,"JDBI", "Java"],
+    datasets: [
+        {
+            data: [0.5, 0.6, 0.8, 0.7, 0.9, 0.9],
+            fillColor: "#3e9cbf"
+        }
+    ]
+}
+
+var options = {
+        animation: false,
+      responsive: true,
+       scaleShowGridLines : false,
+       scaleShowHorizontalLines: false,
+       scaleShowVerticalLines: false,
+       barShowStroke : false,
+       barStrokeWidth : 0.2,
+       showScale: true,
+
+}
+var ctx = document.getElementById("myChart").getContext("2d");
+var myNewChart = new Chart(ctx).HorizontalBar(data, options);
+</script>
